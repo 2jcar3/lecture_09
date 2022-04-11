@@ -39,11 +39,35 @@ def linear_search(sequence, num):
     return search_result
 
 
+def pattern_search(sequence, pattern):
+    #i = 0
+    #mnozina = set()
+    #delka = len(pattern)
+    #for i in range(len(sequence)-delka + 1):
+        #pocitadlo = 0
+        #for j in range(0, delka):
+            #if sequence[i] == pattern[i]:
+                #pocitadlo = 1
+        #if pocitadlo == 0:
+            #mnozina.add(i)
+    positions = set()
+    i = 0
+    while i < len(sequence) - len(pattern):
+        if sequence[i:i + len(pattern)] == pattern:
+            positions.add(i)
+        i += 1
+    return positions
+
+
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")  # prvni je soubor, kde mame data, druhe je konkretni seznam, ktery ma vytisknout
     print(sequential_data)
     results = linear_search(sequential_data, 0)
     print(results)
+    dna_sequence = read_data("sequential.json", "dna_sequence")
+    print(dna_sequence)
+    pos = pattern_search(dna_sequence, "ATA")
+    print(pos)
 
 
 if __name__ == '__main__':
