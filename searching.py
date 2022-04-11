@@ -53,7 +53,13 @@ def pattern_search(sequence, pattern):
     positions = set()
     i = 0
     while i < len(sequence) - len(pattern):
-        if sequence[i:i + len(pattern)] == pattern:
+        j = 0
+        for letter in sequence[i:i + len(pattern)]:
+            if letter != pattern[j]:
+                break
+            else:
+                j += 1
+        if i == len(pattern):
             positions.add(i)
         i += 1
     return positions
